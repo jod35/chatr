@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatr -Chat</title>
+</head>
+<body>
+
+    <div id="main-section">
+        <nav class="sidebar">
+            <h4>Rooms</h4>
+            
+            {% for room in rooms %}
+                <p class="select-room">
+                    {{ room |title }}
+                </p>
+            {% endfor %}
+                
+
+
+        </nav>
+        <div id="rightside-pannel">
+            <div id="display-message-area">
+
+            </div>
+            <div id="input-area">
+                <input type="text" placeholder="Type Here" id="user_message" autocomplete="off">
+                <button id="send_message">SEND</button>
+            </div>
+        </div>
+        <script type="text/javascript">
+            const username = `{{username}}`;
+        </script>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.1/socket.io.js" integrity="sha512-AcZyhRP/tbAEsXCCGlziPun5iFvcSUpEz2jKkx0blkYKbxU81F+iq8FURwPn1sYFeksJ+sDDrI5XujsqSobWdQ==" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static',filename='js/socketio.js') }}"></script>
+</body>
+</html>

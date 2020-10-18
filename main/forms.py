@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms.validators import InputRequired, EqualTo, Length,ValidationError
 from wtforms import PasswordField, StringField
-from models import User
+from .models import User
 
 def invalid_credentials(form,field):
     """Username and Password Cheker"""

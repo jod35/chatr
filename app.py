@@ -1,5 +1,5 @@
-from flask import Flask, render_template
-from forms import RegistrationForm
+from flask import Flask, render_template,redirect,url_for
+from forms import RegistrationForm,LoginForm
 from models import User
 from flask_sqlalchemy import SQLAlchemy
 
@@ -19,17 +19,25 @@ def index():
 
         user_obj=User.query.filter_by(username=username).first()
 
-
+        
         new_user=User(username=username,password=password)
 
         new_user.create()
 
-        return "Inserted Into DB!"
+        return redirect(url_for('login'))
     context = {
         'form': form
     }
     return render_template('index.html', **context)
 
+@app.route('/login',methods=['GET', 'POST'])
+def login():
+    form=LoginForm()
+    
+
+    if form.validate_on_submit():
+        return "Logged In"
+    return render_template('login.html',form=form)
 
 if __name__ == "__main__":
     app.run(debug=True)

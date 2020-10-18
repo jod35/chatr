@@ -20,7 +20,9 @@ def index():
         user_obj=User.query.filter_by(username=username).first()
 
         
-        new_user=User(username=username,password=password)
+        new_user=User(username=username)
+
+        new_user.set_password(password)
 
         new_user.create()
 
@@ -35,8 +37,15 @@ def login():
     form=LoginForm()
     
 
-    if form.validate_on_submit():
-        return "Logged In"
+    username=form.username.data
+
+    password= form.password.data
+
+    user_obj=User.query.filter_by(username=username).first()
+
+    if user_obj and user_obj.check_password(password):
+        return "Logged in"
+
     return render_template('login.html',form=form)
 
 if __name__ == "__main__":

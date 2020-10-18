@@ -12,6 +12,10 @@
     {% endif %}
   </head>
   <body>
+    <div class="nav nav-bar bg-primary">
+        <a href="{{ url_for('index') }}">Register</a>
+        <a href="{{ url_for('login') }}">Login</a>
+    </div>
     {% block content %} {% endblock content %}
   </body>
 </html>

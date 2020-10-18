@@ -1,4 +1,6 @@
+
 {% extends 'prelogin.html' %} {% block content %}
+
 <h1>Register</h1>
 <form action="{{url_for('index')}}" method="POST">
   {{form.csrf_token}}
@@ -29,6 +31,7 @@
         {% endfor %}
     </ul>
   </div>
+
   <input type="submit" value="Create Account" class="btn-primary" />
 </form>
 {% endblock content %}

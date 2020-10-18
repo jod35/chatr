@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 flask-login = "*"
 flask-socketio = "*"
 flask-wtf = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.8"

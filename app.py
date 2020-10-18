@@ -19,8 +19,6 @@ def index():
 
         user_obj=User.query.filter_by(username=username).first()
 
-        if user_obj:
-            return "SomeOne has already taken this username"
 
         new_user=User(username=username,password=password)
 

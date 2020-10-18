@@ -1,3 +1,34 @@
 {% extends 'prelogin.html' %} {% block content %}
 <h1>Register</h1>
+<form action="{{url_for('index')}}" method="POST">
+  {{form.csrf_token}}
+  <div class="form-group">
+    {{form.username.label}}
+    {{form.username(class='form-control',autocomplete='off')}}
+    <ul>
+      {% for error in form.username.errors %}
+        <li style="color: red">{{error}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group">
+    {{form.password.label}}
+    {{form.password(class='form-control',autocomplete='off')}} 
+    <ul>
+        {% for error in form.password.errors %}
+            <li style="color: red">{{error}}</li>
+        {% endfor %}
+    </ul>
+  </div>
+  <div class="form-group">
+    {{form.confirm.label}}
+    {{form.confirm(class='form-control',autocomplete='off')}}
+    <ul>
+        {% for error in form.confirm.errors %}
+            <li style="color: red;">{{error}}</li>
+        {% endfor %}
+    </ul>
+  </div>
+  <input type="submit" value="Create Account" class="btn-primary" />
+</form>
 {% endblock content %}
